@@ -71,7 +71,7 @@ signalpilot-hitl/
 
 ## Local setup
 
-1. Copy `.env.example` to `.env`.
+1. Copy `.env.docker.example` to `.env` for Docker usage, or use `.env.example` for local non-Docker development.
 2. Fill in OpenAI, X, and LinkedIn credentials.
 3. Start infra:
 

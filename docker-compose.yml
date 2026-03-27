@@ -9,6 +9,7 @@ services:
     depends_on:
       - postgres
       - redis
+    restart: unless-stopped
     volumes:
       - ./backend:/app
 
@@ -21,6 +22,7 @@ services:
     depends_on:
       - postgres
       - redis
+    restart: unless-stopped
     volumes:
       - ./backend:/app
 
@@ -31,8 +33,10 @@ services:
       - "5173:5173"
     depends_on:
       - api
+    restart: unless-stopped
     volumes:
       - ./frontend:/app
+      - /app/node_modules
 
   postgres:
     image: postgres:16-alpine
@@ -42,6 +46,7 @@ services:
       POSTGRES_PASSWORD: changeme
     ports:
       - "5432:5432"
+    restart: unless-stopped
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
@@ -49,5 +54,6 @@ services:
     image: redis:7-alpine
     ports:
       - "6379:6379"
+    restart: unless-stopped
     volumes:
       - ./redis-data:/data
